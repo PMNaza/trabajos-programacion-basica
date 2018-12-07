@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dibujo en Canvas</title>
+  </head>
+  <body>
+    <h1>El Dibujo</h1>
+    <p>
+      <h3>Dibujar una línea:</h3>
+      X e Y iniciales:
+      <input type="text" id="input_x_inicial" value="">
+      <input type="text" id="input_y_inicial" value="">
+      <br>
+      X e Y finales:
+      <input type="text" id="input_x_final" value="">
+      <input type="text" id="input_y_final" value="">
+      <br>
+      <input type="button" id="boton_linea" value="Crear Línea">
+    </p>
+    <p>
+      <h3>Dibujar un cuadrado:</h3>
+      Extremo menor en X:
+      <input type="text" id="input_extremo_menor_x" value="">
+      <br>
+      Extremo mayor en X:
+      <input type="text" id="input_extremo_mayor_x" value="">
+      <br>
+      <input type="button" id="boton_cuadrado" value="Crear Cuadrado">
+      <br>
+      <input type="button" id="boton_cuadrado_inception" value="Crear Cuadrado Inception">
+    </p>
+    <p>
+      <h3>Dibujar una curva:</h3>
+      X inicial:
+      <input type="text" id="input_x_inicial_curva" value="">
+      Y inicial:
+      <input type="text" id="input_y_inicial_curva" value="">
+      Y final:
+      <input type="text" id="input_y_final_curva" value="">
+      <br>
+      <input type="button" id="boton_curva" value="Crear Curva">
+    </p>
+    <p>
+      <h3>Hacer dibujo Maestro</h3>
+      Extremo menor en X:
+      <input type="text" id="input_x_extremo_menor_dibujo" value="">
+      <br>
+      Extremo mayor en X:
+      <input type="text" id="input_x_extremo_mayor_dibujo" value="">
+      <br>
+      <input type="button" id="boton_dibujo" value="Crear Dibujo Maestro">
+    </p>
+    <p><input type="button" id="boton_reset" value="Reset"></p>
+    <h2>Puedes dibujar con el mouse o con las flechas del teclado</h2>
+    <canvas id="dibujo" width="1130" height="1130"></canvas>
+    <br>
+    <script type="text/javascript" src="codigo.js"></script>
+    <p>Fin del Dibujo</p>
+  </body>
+</html>
