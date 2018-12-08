@@ -32,6 +32,13 @@ var pollo = {
   url: "Imagenes/pollo.png",
   carga: false
 };
+var x_vaca = new Array();
+var y_vaca = new Array();
+var x_cerdo = new Array();
+var y_cerdo = new Array();
+var cantidad_vaca;
+var cantidad_cerdo;
+var velocidad = 10;
 pollo.imagen = new Image();
 pollo.imagen.src = pollo.url;
 mapa.imagen.addEventListener("load", cargarMapa);
@@ -45,22 +52,27 @@ function dibujar() {
     papel.drawImage(mapa.imagen, 0, 0);
   }
   if (vaca.carga) {
-    var cantidad = random(0, 15);
-    for(v = 0; v < cantidad; v++){
-      papel.drawImage(vaca.imagen, random(0,420), random(0,420));
+    cantidad_vaca = random(0,15);
+    for(v = 0; v < cantidad_vaca; v++){
+      x_vaca[v] = random(0,6);
+      y_vaca[v] = random(0,6);
+      x_vaca[v] *= 70;
+      y_vaca[v] *= 70;
+      papel.drawImage(vaca.imagen, x_vaca[v], y_vaca[v]);
     }
   }
   if (cerdo.carga) {
-    var cantidad = random(0, 15);
-    for(c = 0; c < cantidad; c++){
-      papel.drawImage(cerdo.imagen, random(0,420), random(0,420));
+    cantidad_cerdo = random(0, 15);
+    for(c = 0; c < cantidad_cerdo; c++){
+      x_cerdo[c] = random(0,6);
+      y_cerdo[c] = random(0,6);
+      x_cerdo[c] *= 70;
+      y_cerdo[c] *= 70;
+      papel.drawImage(cerdo.imagen, x_cerdo[c], y_cerdo[c]);
     }
   }
   if (pollo.carga) {
-    var cantidad = 1;
-    for(p = 0; p < cantidad; p++){
-      papel.drawImage(pollo.imagen, x, y);
-    }
+    papel.drawImage(pollo.imagen, x, y);
   }
 }
 function cargarMapa(evento) {
@@ -83,20 +95,43 @@ function random(min, max) {
   var resultado = Math.floor(Math.random() * (max - min + 1)) + min;
   return resultado;
 }
+function mantener(){
+  if (mapa.carga) {
+    papel.drawImage(mapa.imagen, 0, 0);
+  }
+  if (vaca.carga) {
+
+    for(v = 0; v < cantidad_vaca; v++){
+      papel.drawImage(vaca.imagen, x_vaca[v], y_vaca[v]);
+    }
+  }
+  if (cerdo.carga) {
+
+    for(c = 0; c < cantidad_cerdo; c++){
+      papel.drawImage(cerdo.imagen, x_cerdo[c], y_cerdo[c]);
+    }
+  }
+  if (pollo.carga) {
+      papel.drawImage(pollo.imagen, x, y);
+  }
+}
 function moverPollo(evento) {
   switch(evento.keyCode) {
     case teclas.UP:
-      y--;
-      dibujar();
+      y -= velocidad;
+      mantener();
+      break;
     case teclas.DOWN:
-      y++;
-      dibujar();
+      y += velocidad;
+      mantener();
+      break;
     case teclas.LEFT:
-      x--;
-      dibujar();
+      x -= velocidad;
+      mantener();
+      break;
     case teclas.RIGHT:
-      x++;
-      dibujar();
+      x += velocidad;
+      mantener();
       break;
   }
 }
